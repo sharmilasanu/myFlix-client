@@ -22917,66 +22917,29 @@ class MainView extends _reactDefault.default.Component {
         super();
         // Initial state is set to null
         this.state = {
-            movies: [
-                {
-                    _id: 1,
-                    Title: 'Inception',
-                    Description: 'Inception is a 2010 science fiction action film directed by Christopher Nolan, Emma Thomas, his wife. ',
-                    ImagePath: '...'
-                },
-                {
-                    _id: 2,
-                    Title: 'Avatar',
-                    Description: 'Avatar is a 2009 American epic science fiction film directed, written, produced, and co-edited by James Cameron',
-                    ImagePath: '...'
-                },
-                {
-                    _id: 3,
-                    Title: 'Gladiator',
-                    Description: 'Gladiator is a 2000 American-British epic historical drama film directed by Ridley Scott and written by David Franzoni',
-                    ImagePath: '...'
-                },
-                {
-                    _id: 1,
-                    Title: 'Inception',
-                    Description: 'Inception is a 2010 science fiction action film directed by Christopher Nolan, Emma Thomas, his wife. ',
-                    ImagePath: '...'
-                },
-                {
-                    _id: 5,
-                    Title: 'Avatar',
-                    Description: 'Avatar is a 2009 American epic science fiction film directed, written, produced, and co-edited by James Cameron',
-                    ImagePath: '...'
-                },
-                {
-                    _id: 6,
-                    Title: 'Gladiator',
-                    Description: 'Gladiator is a 2000 American-British epic historical drama film directed by Ridley Scott and written by David Franzoni',
-                    ImagePath: '...'
-                },
-                {
-                    _id: 4,
-                    Title: 'Inception',
-                    Description: 'Inception is a 2010 science fiction action film directed by Christopher Nolan, with Emma Thomas, his wife. ',
-                    ImagePath: '...'
-                },
-                {
-                    _id: 5,
-                    Title: 'Avatar',
-                    Description: 'Avatar is a 2009 American epic science fiction film directed, written, produced, and co-edited by James Cameron',
-                    ImagePath: '...'
-                },
-                {
-                    _id: 6,
-                    Title: 'Gladiator',
-                    Description: 'Gladiator is a 2000 American-British epic historical drama film directed by Ridley Scott and written by David Franzoni',
-                    ImagePath: '...'
-                }
-            ],
-            //movies: [],
+            /* movies: [
+        { _id: 1, Title: 'Inception', Description: 'Inception is a 2010 science fiction action film directed by Christopher Nolan, Emma Thomas, his wife. ', ImagePath: '...'},
+        { _id: 2, Title: 'Avatar', Description: 'Avatar is a 2009 American epic science fiction film directed, written, produced, and co-edited by James Cameron', ImagePath: '...'},
+        { _id: 3, Title: 'Gladiator', Description: 'Gladiator is a 2000 American-British epic historical drama film directed by Ridley Scott and written by David Franzoni', ImagePath: '...'},
+        { _id: 1, Title: 'Inception', Description: 'Inception is a 2010 science fiction action film directed by Christopher Nolan, Emma Thomas, his wife. ', ImagePath: '...'},
+        { _id: 5, Title: 'Avatar', Description: 'Avatar is a 2009 American epic science fiction film directed, written, produced, and co-edited by James Cameron', ImagePath: '...'},
+        { _id: 6, Title: 'Gladiator', Description: 'Gladiator is a 2000 American-British epic historical drama film directed by Ridley Scott and written by David Franzoni', ImagePath: '...'},
+        { _id: 4, Title: 'Inception', Description: 'Inception is a 2010 science fiction action film directed by Christopher Nolan, with Emma Thomas, his wife. ', ImagePath: '...'},
+        { _id: 5, Title: 'Avatar', Description: 'Avatar is a 2009 American epic science fiction film directed, written, produced, and co-edited by James Cameron', ImagePath: '...'},
+        { _id: 6, Title: 'Gladiator', Description: 'Gladiator is a 2000 American-British epic historical drama film directed by Ridley Scott and written by David Franzoni', ImagePath: '...'}
+      ],*/ movies: [],
             selectedMovie: null,
             user: null
         };
+    }
+    componentDidMount() {
+        _axiosDefault.default.get('https://sharmismyflix.herokuapp.com/movies').then((response)=>{
+            this.setState({
+                movies: response.data
+            });
+        }).catch((error)=>{
+            console.log(error);
+        });
     }
     /*When a movie is clicked, this function is invoked and updates the state of the `selectedMovie` *property to that movie*/ setSelectedMovie(newSelectedMovie1) {
         this.setState({
@@ -22993,7 +22956,7 @@ class MainView extends _reactDefault.default.Component {
         return(/*#__PURE__*/ _jsxRuntime.jsx(_loginView.LoginView, {
             __source: {
                 fileName: "src/components/MainView/main-view.jsx",
-                lineNumber: 51,
+                lineNumber: 62,
                 columnNumber: 13
             },
             __self: this
@@ -23007,7 +22970,7 @@ class MainView extends _reactDefault.default.Component {
             ,
             __source: {
                 fileName: "src/components/MainView/main-view.jsx",
-                lineNumber: 60,
+                lineNumber: 71,
                 columnNumber: 25
             },
             __self: this
@@ -23018,7 +22981,7 @@ class MainView extends _reactDefault.default.Component {
                 className: "main-view",
                 __source: {
                     fileName: "src/components/MainView/main-view.jsx",
-                    lineNumber: 64,
+                    lineNumber: 75,
                     columnNumber: 38
                 },
                 __self: this
@@ -23027,7 +22990,7 @@ class MainView extends _reactDefault.default.Component {
                 className: "main-view",
                 __source: {
                     fileName: "src/components/MainView/main-view.jsx",
-                    lineNumber: 67,
+                    lineNumber: 78,
                     columnNumber: 7
                 },
                 __self: this,
@@ -23035,7 +22998,7 @@ class MainView extends _reactDefault.default.Component {
                     className: "justify-content-md-center",
                     __source: {
                         fileName: "src/components/MainView/main-view.jsx",
-                        lineNumber: 71,
+                        lineNumber: 82,
                         columnNumber: 13
                     },
                     __self: this,
@@ -23045,7 +23008,7 @@ class MainView extends _reactDefault.default.Component {
                             md: 8,
                             __source: {
                                 fileName: "src/components/MainView/main-view.jsx",
-                                lineNumber: 71,
+                                lineNumber: 82,
                                 columnNumber: 57
                             },
                             __self: this,
@@ -23058,7 +23021,7 @@ class MainView extends _reactDefault.default.Component {
                                     },
                                     __source: {
                                         fileName: "src/components/MainView/main-view.jsx",
-                                        lineNumber: 71,
+                                        lineNumber: 82,
                                         columnNumber: 70
                                     },
                                     __self: this
@@ -23071,7 +23034,7 @@ class MainView extends _reactDefault.default.Component {
                     className: "justify-content-md-center",
                     __source: {
                         fileName: "src/components/MainView/main-view.jsx",
-                        lineNumber: 74,
+                        lineNumber: 85,
                         columnNumber: 13
                     },
                     __self: this,
@@ -23079,7 +23042,7 @@ class MainView extends _reactDefault.default.Component {
                             md: 4,
                             __source: {
                                 fileName: "src/components/MainView/main-view.jsx",
-                                lineNumber: 76,
+                                lineNumber: 87,
                                 columnNumber: 17
                             },
                             __self: this,
@@ -23090,7 +23053,7 @@ class MainView extends _reactDefault.default.Component {
                                 },
                                 __source: {
                                     fileName: "src/components/MainView/main-view.jsx",
-                                    lineNumber: 77,
+                                    lineNumber: 88,
                                     columnNumber: 19
                                 },
                                 __self: this
@@ -24301,7 +24264,7 @@ class MovieView extends _reactDefault.default.Component {
             className: "movie-view",
             __source: {
                 fileName: "src/components/MovieView/movie-view.jsx",
-                lineNumber: 10,
+                lineNumber: 9,
                 columnNumber: 7
             },
             __self: this,
@@ -24310,7 +24273,7 @@ class MovieView extends _reactDefault.default.Component {
                     className: "movie-poster",
                     __source: {
                         fileName: "src/components/MovieView/movie-view.jsx",
-                        lineNumber: 11,
+                        lineNumber: 10,
                         columnNumber: 9
                     },
                     __self: this,
@@ -24318,7 +24281,7 @@ class MovieView extends _reactDefault.default.Component {
                         src: movie.ImagePath,
                         __source: {
                             fileName: "src/components/MovieView/movie-view.jsx",
-                            lineNumber: 12,
+                            lineNumber: 11,
                             columnNumber: 11
                         },
                         __self: this
@@ -24328,7 +24291,7 @@ class MovieView extends _reactDefault.default.Component {
                     className: "movie-title",
                     __source: {
                         fileName: "src/components/MovieView/movie-view.jsx",
-                        lineNumber: 14,
+                        lineNumber: 13,
                         columnNumber: 9
                     },
                     __self: this,
@@ -24337,7 +24300,7 @@ class MovieView extends _reactDefault.default.Component {
                             className: "label",
                             __source: {
                                 fileName: "src/components/MovieView/movie-view.jsx",
-                                lineNumber: 15,
+                                lineNumber: 14,
                                 columnNumber: 11
                             },
                             __self: this,
@@ -24347,7 +24310,7 @@ class MovieView extends _reactDefault.default.Component {
                             className: "value",
                             __source: {
                                 fileName: "src/components/MovieView/movie-view.jsx",
-                                lineNumber: 16,
+                                lineNumber: 15,
                                 columnNumber: 11
                             },
                             __self: this,
@@ -24359,7 +24322,7 @@ class MovieView extends _reactDefault.default.Component {
                     className: "movie-description",
                     __source: {
                         fileName: "src/components/MovieView/movie-view.jsx",
-                        lineNumber: 18,
+                        lineNumber: 17,
                         columnNumber: 9
                     },
                     __self: this,
@@ -24368,7 +24331,7 @@ class MovieView extends _reactDefault.default.Component {
                             className: "label",
                             __source: {
                                 fileName: "src/components/MovieView/movie-view.jsx",
-                                lineNumber: 19,
+                                lineNumber: 18,
                                 columnNumber: 11
                             },
                             __self: this,
@@ -24378,7 +24341,7 @@ class MovieView extends _reactDefault.default.Component {
                             className: "value",
                             __source: {
                                 fileName: "src/components/MovieView/movie-view.jsx",
-                                lineNumber: 20,
+                                lineNumber: 19,
                                 columnNumber: 11
                             },
                             __self: this,
@@ -24392,7 +24355,7 @@ class MovieView extends _reactDefault.default.Component {
                     },
                     __source: {
                         fileName: "src/components/MovieView/movie-view.jsx",
-                        lineNumber: 22,
+                        lineNumber: 21,
                         columnNumber: 9
                     },
                     __self: this,
