@@ -21,7 +21,7 @@ The Following Components are used ,
 
 
 ## :white_check_mark: Git Hub Page 
-:link: 
+:link: https://sharmilasanu.github.io/myFlix-client
 
 ## :white_check_mark:  Libraries / Frameworks Used 
 :small_orange_diamond:  React
