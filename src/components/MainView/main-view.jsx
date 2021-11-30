@@ -13,7 +13,7 @@ class MainView extends React.Component {
     super(); 
     // Initial state is set to null
     this.state = {
-     movies: [
+    /* movies: [
         { _id: 1, Title: 'Inception', Description: 'Inception is a 2010 science fiction action film directed by Christopher Nolan, Emma Thomas, his wife. ', ImagePath: '...'},
         { _id: 2, Title: 'Avatar', Description: 'Avatar is a 2009 American epic science fiction film directed, written, produced, and co-edited by James Cameron', ImagePath: '...'},
         { _id: 3, Title: 'Gladiator', Description: 'Gladiator is a 2000 American-British epic historical drama film directed by Ridley Scott and written by David Franzoni', ImagePath: '...'},
@@ -23,13 +23,24 @@ class MainView extends React.Component {
         { _id: 4, Title: 'Inception', Description: 'Inception is a 2010 science fiction action film directed by Christopher Nolan, with Emma Thomas, his wife. ', ImagePath: '...'},
         { _id: 5, Title: 'Avatar', Description: 'Avatar is a 2009 American epic science fiction film directed, written, produced, and co-edited by James Cameron', ImagePath: '...'},
         { _id: 6, Title: 'Gladiator', Description: 'Gladiator is a 2000 American-British epic historical drama film directed by Ridley Scott and written by David Franzoni', ImagePath: '...'}
-      ],
-      //movies: [],
+      ],*/
+      movies: [],
       selectedMovie: null,
       user : null
     }
   }
   
+  componentDidMount(){
+    axios.get('https://sharmismyflix.herokuapp.com/movies')
+        .then(response => {
+            this.setState({
+                movies: response.data
+            });
+        })
+        .catch(error => {
+            console.log(error);
+        });
+}
   /*When a movie is clicked, this function is invoked and updates the state of the `selectedMovie` *property to that movie*/
   setSelectedMovie(newSelectedMovie) {
     this.setState({
