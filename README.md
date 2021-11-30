@@ -15,9 +15,9 @@ The Following Components are used ,
 | -------------    | :-------------:  | 
 | Main View        | Parent Component| 
 | Login View       | Renders the Login Page| 
-| Movie Card View  |  Displays the Movies from Api    |   
-| Movie View       |    Displays more Details about a Specific Movie  | 
-| Registration View       |    Renders Registration Page for new users  | 
+| Movie Card View  | Displays the Movies from Api    |   
+| Movie View       | Displays more Details about a Specific Movie  | 
+| Registration View| Renders Registration Page for new users  | 
 
 
 ## :white_check_mark: Git Hub Page 
