@@ -7,8 +7,26 @@ export function RegistrationView(props) {
     const [ email, setEmail ] = useState('');
 
     const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(username, password, birthday, email);
+      if (username.length < 4) return setError('Must include a username that is longer than 4 characters');
+      if (password.length < 6) return setError('Must include a password that is longer than 6 characters');
+      const alphaNum = /^[0-9a-zA-Z]+$/;
+      if (!username.match(alphaNum)) return setError('Username must contain only letters and numbers');
+      if (password !== confirmPassword) return setError('Passwords do not match');
+
+      axios.post('https://avengers-database.herokuapp.com/users/', {
+          Username: username,
+          Password: password,
+          Email: email,
+          Birthday: birthday
+      })
+          .then(response => {
+              console.log(response.data);
+              window.open('/', '_self'); // the second argument '_self' is necessary so that the page will open in the current tab
+          })
+          .catch(e => {
+              setError('Username already exists please pick another one')
+              console.log('error registering the user')
+          });
     };
     return (
 
