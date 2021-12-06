@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { Col, Row } from "react-bootstrap";
-import '../LoginView/login-view.scss';
+import { Col, Row ,Container} from "react-bootstrap";
+import './login-view.scss';
 
 export function LoginView(props) {
   const [ username, setUsername ] = useState('');
@@ -10,16 +11,28 @@ export function LoginView(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-   
     /* Send a request to the server for authentication */
-    /* then call props.onLoggedIn(username) */
-     props.onLoggedIn(username);
+    axios.post('https://sharmismyflix.herokuapp.com/login', {
+      UserName: username,
+      Password: password
+    })
+    .then(response => {
+      
+      const data = response.data;
+      console.log(response.data)
+      props.onLoggedIn(data);
+    })
+    .catch(e => {
+      console.log('no such user')
+      console.log(password)
+    });
   };
+ 
   
   return (
 
-    <Col sm = {5} >
-    <Form className = "login-form">
+  
+    <Form>
       <h3>Login</h3>
       <Form.Group controlId="formUsername">
         <Form.Label>Username:</Form.Label>
@@ -35,6 +48,6 @@ export function LoginView(props) {
       </Button>
       <Button variant="secondary" type="button">Regsiter</Button>
     </Form>
-   </Col>
+  
   );
 }
