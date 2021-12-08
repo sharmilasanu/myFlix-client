@@ -23026,7 +23026,7 @@ class MainView extends _reactDefault.default.Component {
                             children: [
                                 /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Route, {
                                     path: "/",
-                                    render: ()=>{
+                                    element: ()=>{
                                         if (!user1) return(/*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Col, {
                                             children: /*#__PURE__*/ _jsxRuntime.jsx(_loginView.LoginView, {
                                                 onLoggedIn: (user)=>this.onLoggedIn(user)
