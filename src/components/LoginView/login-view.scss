@@ -1,7 +1,5 @@
 $backgroud-color: #eaeaea;
-body {
-  height: 1000px;
-}
+
 .login-view {
   width: 80%;
   padding: 30px;
@@ -14,4 +12,8 @@ body {
   width: 60%;
   margin-top: 30px;
   background-image: -webkit-linear-gradient(top left, #5388fa, #7b2ce2);
+}
+.login {
+  margin-top: 5px;
+  height: 700px;
 }
