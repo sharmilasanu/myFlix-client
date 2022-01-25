@@ -1,25 +1,89 @@
 import React from 'react';
+import axios from 'axios';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-export class MovieView extends React.Component {
+import { Container, Row, Col, Button } from 'react-bootstrap';
+// scss file 
+import './movie-view.scss'
 
-  render() {
-    const { movie,onBackClick  } = this.props;
+export function MovieView({ movie, user, setUser, onBackClick }) {
+
+    const addToFave = () => {
+        axios.post(`https://sharmismyflix.herokuapp.com/users/${user.UserName}/movies/${movie._id}`)
+            .then(response => {
+                setUser(response.data);
+            })
+            .catch(err => {
+                console.error(err)
+            });
+    }
+
+    const pullFromFave = () => {
+        axios.delete(`https://sharmismyflix.herokuapp.com/users/${user.UserName}/movies/${movie._id}`)
+            .then(response => {
+                setUser(response.data);
+            })
+            .catch(err => {
+                console.error(err)
+            });
+    }
 
     return (
-      <div className="movie-view">
-        <div className="movie-poster">
-          <img src={movie.ImagePath} />
-        </div>
-        <div className="movie-title">
-          <span className="label">Title: </span>
-          <span className="value">{movie.Title}</span>
-        </div>
-        <div className="movie-description">
-          <span className="label">Description: </span>
-          <span className="value">{movie.Description}</span>
-        </div>
-        <button onClick={() => { onBackClick(null) }}>Back</button>
-       </div>
-    );
-  }
+        <Container className='movie-view'>
+            <Row>
+                <Col className="m-4">
+                    <h1 style={{ fontWeight: 700 }}>{movie.Title}</h1>
+                    <Link to={`/directors/${movie.Director.Name}`}>
+                        <p className="text-secondary">{movie.Director.Name}</p>
+                    </Link>
+                    
+                    <Link to={`/genres/${movie.Genre.Name}`} style={{ textDecoration: 'none', color: 'none' }}>
+                        <p><span className="text-muted">Genre:</span> {movie.Genre.Name}</p>
+                    </Link>
+                    {user.FavoriteMovies.includes(movie._id)
+                        ? <Button variant="danger" onClick={pullFromFave}>Remove from favorites</Button>
+                        : <Button variant="warning" onClick={addToFave}>Add to favorites</Button>
+                    }
+                </Col>
+                <Col>
+                    <img className="movie-img" src={movie.ImagePath} alt={`Movie poster of ${movie.Title}`} />
+                </Col>
+            </Row>
+            <Row className="mt-4">
+                <h3>{movie.Description}</h3>
+            </Row>
+            <Button variant="dark" className="mt-4" size="md" onClick={() => onBackClick()}>Back</Button>
+        </Container >
+    )
+}
+
+const mapStateToProps = state => {
+    const { user } = state;
+    return { user };
+}
+
+export default connect(mapStateToProps)(MovieView);
+
+
+MovieView.propTypes = {
+    movie: PropTypes.shape({
+        _id: PropTypes.string.isRequired,
+        Title: PropTypes.string.isRequired,
+        Description: PropTypes.string.isRequired,
+        ImagePath: PropTypes.string.isRequired,
+        Director: PropTypes.shape({
+            Name: PropTypes.string.isRequired
+        }).isRequired,
+        Genre: PropTypes.shape({
+            Name: PropTypes.string.isRequired
+        }).isRequired
+    }).isRequired,
+    user: PropTypes.shape({
+        UserName: PropTypes.string.isRequired,
+        FavoriteMovies: PropTypes.array.isRequired
+    }).isRequired,
+    setUser: PropTypes.func.isRequired,
+    onBackClick: PropTypes.func.isRequired
 }
