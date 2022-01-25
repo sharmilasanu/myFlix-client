@@ -37302,7 +37302,7 @@ function LoginView({ onLoggedIn  }) {
         });
     };
     return(/*#__PURE__*/ _jsxRuntime.jsxs("div", {
-        className: "mt-4 d-flex flex-column justify-content-center align-items-center",
+        className: "mt-4 d-flex flex-column justify-content-center align-items-center login",
         __source: {
             fileName: "src/components/LoginView/login-view.jsx",
             lineNumber: 42,
