@@ -39,7 +39,7 @@ export function LoginView({ onLoggedIn }) {
     }
 
     return (
-        <div className="mt-4 d-flex flex-column justify-content-center align-items-center">
+        <div className="mt-4 d-flex flex-column justify-content-center align-items-center login">
             <h1 className="d-flex align-items-center mb-5" style={{ fontFamily: 'Montserrat', fontWeight: 700, color: "#777978" }}>
                
             </h1>
