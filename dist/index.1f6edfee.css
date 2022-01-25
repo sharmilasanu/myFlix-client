@@ -7,11 +7,8 @@
   background: #d4d4d4;
   font-family: "PT Sans", sans-serif;
 }
-#body {
-  font-family: "Helvetica Neue", "Open sans", sans-serif;
-  background-color: gray;
-  background-image: -webkit-linear-gradient(top left, #a802e0, #f7676a);
-  color: white;
+body {
+  height: 1000px;
 }
 
 .login-view {
@@ -19,25 +16,46 @@
   padding: 30px;
   border-radius: 14px;
   border: 4px ridge;
-  background-image: -webkit-linear-gradient(top left, #a802e0, #f7676a);
+  background-image: -webkit-linear-gradient(top left, #c092cf, #f38789);
 }
 
 .register-button {
   width: 60%;
   margin-top: 30px;
+  background-image: -webkit-linear-gradient(top left, #5388fa, #7b2ce2);
 }
+
 .registration-view {
   width: 60%;
   padding: 30px;
   border-radius: 14px;
   border: 4px ridge;
-  background-color: #eaeaea;
+  background-image: -webkit-linear-gradient(top left, #5388fa, #be99ee);
 }
 
 .login-button {
   width: 60%;
   margin-top: 30px;
 }
+.user-info {
+  margin: 40px 20px;
+}
 
+.update-form {
+  width: 90%;
+  padding: 30px;
+  border-radius: 14px;
+  border: 4px ridge;
+  background-image: -webkit-linear-gradient(top left, #5388fa, #be99ee);
+}
 
+h5 {
+  line-height: 2;
+}
+
+@media screen and (max-width: 760px) {
+  .update-form {
+    margin-top: 90px;
+  }
+}
 /*# sourceMappingURL=index.1f6edfee.css.map */
