@@ -1,0 +1,20 @@
+$backgroud-color: #eaeaea;
+#body {
+  font-family: "Helvetica Neue", "Open sans", sans-serif;
+  background-color: gray;
+  background-image: -webkit-linear-gradient(top left, #a802e0, #f7676a);
+  color: white;
+}
+.login-view {
+  width: 80%;
+  padding: 30px;
+  border-radius: 14px;
+  border: 4px ridge;
+
+  background-image: -webkit-linear-gradient(top left, #a802e0, #f7676a);
+}
+
+.register-button {
+  width: 60%;
+  margin-top: 30px;
+}
