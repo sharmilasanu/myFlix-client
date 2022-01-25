@@ -1,53 +1,66 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-import { Col, Row ,Container} from "react-bootstrap";
-import './login-view.scss';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
-export function LoginView(props) {
-  const [ username, setUsername ] = useState('');
-  const [ password, setPassword ] = useState('');
+// react-bootstrap UI
+import { Form, FloatingLabel, Button } from 'react-bootstrap';
+// scss file 
+import './login-view.scss'
+// logo img
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    /* Send a request to the server for authentication */
-    axios.post('https://sharmismyflix.herokuapp.com/login', {
-      UserName: username,
-      Password: password
-    })
-    .then(response => {
-      
-      const data = response.data;
-      console.log(response.data)
-      props.onLoggedIn(data);
-    })
-    .catch(e => {
-      console.log('no such user')
-      console.log(password)
-    });
-  };
- 
-  
-  return (
 
-  
-    <Form>
-      <h3>Login</h3>
-      <Form.Group controlId="formUsername">
-        <Form.Label>Username:</Form.Label>
-        <Form.Control type="text" placeholder = "Enter Username" onChange={e => setUsername(e.target.value)} />
-      </Form.Group>
 
-      <Form.Group controlId="formPassword">
-        <Form.Label>Password:</Form.Label>
-        <Form.Control type="password"  placeholder = "Enter Password" onChange={e => setPassword(e.target.value)} />
-      </Form.Group>
-      <Button className="btn btn-dark btn-lg btn-block" type="submit" onClick={handleSubmit}>
-        Submit
-      </Button>
-      <Button variant="secondary" type="button">Regsiter</Button>
-    </Form>
-  
-  );
+export function LoginView({ onLoggedIn }) {
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('')
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        // error validation
+        if (username.length < 4) return setError('Must include a username that is longer than 4 characters');
+        if (password.length < 6) return setError('Must include a password that is longer than 6 characters');
+
+        axios.post('https://sharmismyflix.herokuapp.com/login/', {
+            UserName: username,
+            Password: password,
+        })
+            .then(response => {
+                onLoggedIn(response.data);
+            })
+            .catch(err => {
+                setError("User does not exist");
+                console.error(`User does not exist, ${err}`);
+            })
+    }
+
+    return (
+        <div className="mt-4 d-flex flex-column justify-content-center align-items-center">
+            <h1 className="d-flex align-items-center mb-5" style={{ fontFamily: 'Montserrat', fontWeight: 700, color: "#777978" }}>
+               
+            </h1>
+            <Form className="login-view" onSubmit={handleSubmit} style={{ textAlign: "center" }}>
+                <h1 style={{ fontFamily: 'Montserrat', fontWeight: 700 }}>Login</h1>
+                <FloatingLabel controlId="formUsername" label="Username" className="mb-3 mt-4">
+                    <Form.Control type="text" value={username} onChange={e => setUsername(e.target.value)} placeholder="username" required />
+                </FloatingLabel>
+                <FloatingLabel controlId="formPassword" label="Password" className="mb-3">
+                    <Form.Control type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="password" required />
+                </FloatingLabel>
+                {error && <h5 style={{ color: "red", marginBottom: "40px" }}>Incorrect username or password</h5>}
+                <div className="d-grid gap-2">
+                    <Button size="lg" variant="success" type="submit">Submit</Button>
+                </div>
+                <Link to={`/register`}>
+                    <Button size="lg" variant="primary" className="register-button"> Register</Button>
+                </Link>
+            </Form>
+        </div >
+    )
+}
+
+LoginView.propTypes = {
+    onLoggedIn: PropTypes.func.isRequired
 }
