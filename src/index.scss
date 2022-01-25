@@ -1,0 +1,12 @@
+$primary-color: steelblue;
+$backgroud-color: #d4d4d4;
+
+:root {
+  background: $backgroud-color;
+}
+
+.my-flix {
+  color: $primary-color;
+  background: $backgroud-color;
+  font-family: "PT Sans", sans-serif;
+}
