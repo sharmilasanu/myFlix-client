@@ -5,8 +5,7 @@ import { Link } from 'react-router-dom';
 // react-bootstrap UI
 import { Navbar, Nav, Container, Button } from 'react-bootstrap';
 
-// logo img
-import img from "../../logo.png";
+
 
 export function Topbar({ onLoggedOut }) {
   return (
