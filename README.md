@@ -20,8 +20,8 @@ The Following Components are used ,
 | Registration View| Renders Registration Page for new users  | 
 
 
-## :white_check_mark: Git Hub Page 
-:link: https://sharmilasanu.github.io/myFlix-client
+## :white_check_mark: Hosted on
+:link: https://sharmismyflix.netlify.app/ 
 
 ## :white_check_mark:  Libraries / Frameworks Used 
 :small_orange_diamond:  React
